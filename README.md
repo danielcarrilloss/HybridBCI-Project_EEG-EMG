@@ -2,7 +2,7 @@
 
 This repository contains the software and physical modeling to control a 5-Degree-of-Freedom (DOF) laboratory robotic arm (based on the PhantomX Reactor) using a multi-modal Brain-Computer Interface (BCI). It was developed as part of my MSc in Neurotechnology, specifically the Neuroprosthetics course, to merge high-level intent from brainwaves (EEG) with low-level execution from muscle activity (EMG).
 
-## 🧠 System Architecture
+## System Architecture
 
 The project bridges human neuroscience with physical robotic kinematics:
 
@@ -14,7 +14,7 @@ The project bridges human neuroscience with physical robotic kinematics:
    - Samples an analog EMG sensor at 200 Hz via hardware interrupts to control the end-effector (gripper).
    - Manages dynamic "Hybrid" (EEG starts the route, EMG controls grasp) and "Direct" (EEG-only validation) control paths.
 
-## 📐 Robotic Kinematics
+## Robotic Kinematics
 
 The physical execution relies on custom Forward and Inverse Kinematics models, utilizing the kinematic decoupling technique. The robot consists of 5 revolute joints ($q_1$ through $q_5$) mapping to the Base, Shoulder, Elbow, Wrist, and Wrist Rotation. 
 
@@ -38,7 +38,7 @@ To ensure safe operation and prevent self-collision or servo damage, the system 
 * **$q_5$ (Wrist Rot):** -1.05 to 4.19
 
 
-## ⚙️ Core Features
+## Core Features
 
 * **Real-time EEG Classification:** Uses logarithmic power ratios and Euclidean distance to classify motor imagery against a dynamically calibrated resting baseline.
 * **Dynamic EMG Calibration:** Calculates resting and flexing thresholds on the fly to account for sensor placement variations and muscle fatigue.
@@ -46,13 +46,13 @@ To ensure safe operation and prevent self-collision or servo damage, the system 
     * **Intent to Act:** EMG thresholding allows the user to manually trigger the gripper during the transport phase.
 * **Safety Protocols:** Includes a 700ms gripper lockout to prevent rapid oscillation, and hardware timeout routines.
 
-## 🛠️ Hardware Requirements
+## Hardware Requirements
 
 * **Robot:** PhantomX Reactor.
 * **Microcontroller:** Arduino-compatible board.
 * **Sensors:** Analog EMG sensor (connected to `A0`), Bitbrain EEG amplifier.
 
-## 💻 Software Dependencies
+## Software Dependencies
 
 **Arduino:**
 * `ax12.h` (Dynamixel Servo Control)
@@ -63,7 +63,7 @@ To ensure safe operation and prevent self-collision or servo damage, the system 
 * `pyserial` (Arduino communication)
 * `numpy`, `scipy` (Signal processing and filtering)
 
-## 🚀 Setup and Usage
+## Setup and Usage
 
 1. **Upload Firmware:** Flash `GR12_D3a.ino` to the Arduino. Ensure servos are powered and connected via the Dynamixel bus.
 2. **Start EEG Stream:** Connect the Bitbrain headset and begin broadcasting data over your local LSL network.
